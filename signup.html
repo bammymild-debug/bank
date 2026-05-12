@@ -204,6 +204,52 @@
         font-size: 24px;
       }
     }
+
+    @media (max-width:900px){
+      .menu a,
+      .sidebar-bottom a{
+        flex:1 1 48%;
+        min-width:140px;
+      }
+
+      .sidebar-bottom{
+        flex-direction:row;
+        flex-wrap:wrap;
+      }
+
+      .sidebar{
+        padding:20px 15px;
+      }
+
+      .topbar{
+        flex-direction:column;
+        align-items:flex-start;
+        gap:18px;
+      }
+    }
+
+    @media (max-width:600px){
+      .sidebar{
+        width:100%;
+      }
+
+      .menu{
+        flex-direction:column;
+      }
+
+      .menu a,
+      .sidebar-bottom a{
+        flex:1 1 100%;
+      }
+
+      .main{
+        padding:16px;
+      }
+
+      .sidebar-bottom{
+        gap:10px;
+      }
+    }
   </style>
 </head>
 
