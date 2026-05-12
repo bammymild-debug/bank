@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Logged Out - AyobamiBank</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Inter', sans-serif;
+    }
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #0f172a;
+      color: #fff;
+      padding: 24px;
+    }
+
+    .logout-card {
+      width: 100%;
+      max-width: 520px;
+      background: #111827;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 28px;
+      padding: 42px 36px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .logout-card::before {
+      content: '';
+      position: absolute;
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      background: rgba(56, 189, 248, 0.1);
+      top: -70px;
+      right: -70px;
+    }
+
+    .logout-title {
+      font-size: 32px;
+      margin-bottom: 14px;
+    }
+
+    .logout-text {
+      color: #94a3b8;
+      line-height: 1.8;
+      margin-bottom: 32px;
+    }
+
+    .logout-actions {
+      display: grid;
+      gap: 16px;
+    }
+
+    .button-primary,
+    .button-secondary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 16px 22px;
+      border-radius: 16px;
+      border: none;
+      text-decoration: none;
+      font-weight: 600;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .button-primary {
+      background: linear-gradient(135deg, #38bdf8, #2563eb);
+      color: #fff;
+    }
+
+    .button-secondary {
+      background: rgba(255, 255, 255, 0.06);
+      color: #cbd5e1;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .button-primary:hover,
+    .button-secondary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 14px 40px rgba(56, 189, 248, 0.12);
+    }
+
+    .logout-note {
+      margin-top: 26px;
+      color: #64748b;
+      font-size: 14px;
+      line-height: 1.7;
+    }
+
+    @media (max-width: 540px) {
+      .logout-card {
+        padding: 32px 24px;
+      }
+
+      .logout-title {
+        font-size: 28px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="logout-card">
+    <h1 class="logout-title">You are logged out</h1>
+    <p class="logout-text">Your session is complete. Your account balance is hidden for security, and you can safely continue to your mail page.</p>
+    <div class="logout-actions">
+      <a href="mail.html" class="button-primary">Go to Mail Page</a>
+      <a href="dashboard.html" class="button-secondary">Back to Bank Login</a>
+    </div>
+    <p class="logout-note">If you meant to access your inbox directly, click the mail page button above.</p>
+  </div>
+</body>
+</html>

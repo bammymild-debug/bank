@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Settings - Ayobami Bank</title>
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:Arial, sans-serif;
+}
+
+body{
+  background:#0f172a;
+  color:#fff;
+  display:flex;
+  min-height:100vh;
+}
+
+/* SIDEBAR */
+.sidebar{
+  width:250px;
+  background:#111827;
+  padding:20px;
+}
+
+.logo{
+  font-size:22px;
+  font-weight:bold;
+  color:#38bdf8;
+  margin-bottom:30px;
+}
+
+.sidebar a{
+  display:block;
+  padding:12px;
+  color:#cbd5e1;
+  text-decoration:none;
+  border-radius:10px;
+  margin-bottom:10px;
+}
+
+.sidebar a:hover{
+  background:#1e293b;
+  color:#fff;
+}
+
+.logout{
+  margin-top:30px;
+  background:#ef4444;
+  text-align:center;
+  color:#fff !important;
+}
+
+/* MAIN */
+.main{
+  flex:1;
+  padding:30px;
+}
+
+h1{
+  margin-bottom:20px;
+}
+
+/* SETTINGS BOXES */
+.settings-box{
+  background:#111827;
+  padding:20px;
+  border-radius:15px;
+  margin-bottom:20px;
+  border:1px solid rgba(255,255,255,0.05);
+}
+
+.settings-box h3{
+  margin-bottom:15px;
+  color:#38bdf8;
+}
+
+input, select{
+  width:100%;
+  padding:12px;
+  margin-bottom:10px;
+  border:none;
+  border-radius:10px;
+  background:#1e293b;
+  color:#fff;
+  outline:none;
+}
+
+button{
+  padding:12px;
+  width:100%;
+  border:none;
+  border-radius:10px;
+  background:#38bdf8;
+  color:#000;
+  font-weight:bold;
+  cursor:pointer;
+}
+
+button:hover{
+  background:#2563eb;
+  color:#fff;
+}
+
+/* RESPONSIVE */
+@media(max-width:800px){
+  body{
+    flex-direction:column;
+  }
+
+  .sidebar{
+    width:100%;
+  }
+}
+</style>
+
+</head>
+<body>
+
+<!-- SIDEBAR -->
+<div class="sidebar">
+  <div class="logo">AyobamiBank</div>
+
+  <nav class="menu">
+        <a href="dashboard.html" class="active">Dashboard</a>
+        <a href="payment.html">Payments</a>
+        <a href="transfer.html">Transfers</a>
+        <a href="analytics.html">Analytics</a>
+        <a href="cards.html">Cards</a>
+        <a href="loans.html">Loans</a>
+        <a href="settings.html">Settings</a>
+      </nav>
+
+  <a class="logout" href="logout.html">Log Out</a>
+  </div>
+
+  <!-- BANK SETTINGS -->
+  <div class="settings-box">
+    <h3>Bank Preferences</h3>
+    <select>
+      <option>Currency - USD</option>
+      <option>Currency - NGN</option>
+      <option>Currency - EUR</option>
+    </select>
+
+    <select>
+      <option>Notifications ON</option>
+      <option>Notifications OFF</option>
+    </select>
+
+    <button>Save Settings</button>
+  </div>
+
+  <!-- SECURITY -->
+  <div class="settings-box">
+    <h3>Security</h3>
+    <input type="text" placeholder="Enable 2FA (Phone)">
+    <button>Enable Security</button>
+  </div>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>AyobamiBank - Cards</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family:'Inter',sans-serif;
+    }
+
+    body{
+      display:flex;
+      min-height:100vh;
+      background:#0f172a;
+      color:white;
+    }
+
+    /* SIDEBAR */
+    .sidebar{
+      width:260px;
+      background:#111827;
+      padding:30px 20px;
+      display:flex;
+      flex-direction:column;
+      justify-content:space-between;
+      border-right:1px solid rgba(255,255,255,0.05);
+    }
+
+    .logo{
+      font-size:28px;
+      font-weight:700;
+      color:#38bdf8;
+      margin-bottom:40px;
+    }
+
+    .menu{
+      display:flex;
+      flex-direction:column;
+      gap:12px;
+    }
+
+    .menu a{
+      text-decoration:none;
+      color:#cbd5e1;
+      padding:14px 18px;
+      border-radius:14px;
+      transition:0.3s;
+      font-weight:500;
+    }
+
+    .menu a:hover,
+    .menu a.active{
+      background:#1e293b;
+      color:white;
+    }
+
+    .sidebar-bottom{
+      display:flex;
+      flex-direction:column;
+      gap:12px;
+    }
+
+    .signup{
+      padding:14px 18px;
+      border-radius:14px;
+      background:#1e293b;
+      text-align:center;
+      text-decoration:none;
+      color:white;
+      font-weight:600;
+      border:1px solid rgba(255,255,255,0.05);
+    }
+
+    .logout{
+      padding:14px 18px;
+      border-radius:14px;
+      background:#ef4444;
+      text-align:center;
+      text-decoration:none;
+      color:white;
+      font-weight:600;
+    }
+
+    /* MAIN */
+    .main{
+      flex:1;
+      padding:30px;
+    }
+
+    .topbar h1{
+      font-size:32px;
+    }
+
+    .topbar p{
+      color:#94a3b8;
+      margin-top:6px;
+      margin-bottom:30px;
+    }
+
+    /* CARDS */
+    .cards-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+      gap:20px;
+    }
+
+    .card{
+      background:linear-gradient(135deg,#1e293b,#111827);
+      padding:25px;
+      border-radius:24px;
+      border:1px solid rgba(255,255,255,0.05);
+      position:relative;
+      overflow:hidden;
+    }
+
+    .card::before{
+      content:"";
+      position:absolute;
+      width:180px;
+      height:180px;
+      background:rgba(56,189,248,0.1);
+      border-radius:50%;
+      top:-70px;
+      right:-70px;
+    }
+
+    .card-type{
+      font-size:14px;
+      color:#94a3b8;
+      margin-bottom:15px;
+    }
+
+    .card-number{
+      font-size:20px;
+      letter-spacing:2px;
+      margin-bottom:20px;
+    }
+
+    .card-bottom{
+      display:flex;
+      justify-content:space-between;
+      margin-top:20px;
+    }
+
+    .label{
+      font-size:12px;
+      color:#94a3b8;
+    }
+
+    .value{
+      font-weight:600;
+    }
+
+    .visa{
+      margin-top:20px;
+      font-weight:700;
+      color:#38bdf8;
+      letter-spacing:2px;
+    }
+
+    /* ADD CARD */
+    .add-card{
+      background:#1e293b;
+      border:1px dashed rgba(255,255,255,0.2);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-size:18px;
+      cursor:pointer;
+      transition:0.3s;
+    }
+
+    .add-card:hover{
+      background:#273549;
+    }
+
+    /* RESPONSIVE */
+    @media(max-width:850px){
+      body{
+        flex-direction:column;
+      }
+
+      .sidebar{
+        width:100%;
+      }
+
+      .menu{
+        flex-direction:row;
+        flex-wrap:wrap;
+      }
+    }
+
+    @media(max-width:600px){
+      .main{
+        padding:20px;
+      }
+
+      .topbar h1{
+        font-size:26px;
+      }
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+
+    <div>
+      <div class="logo">AyobamiBank</div>
+
+      <nav class="menu">
+        <a href="dashboard.html" class="active">Dashboard</a>
+        <a href="payment.html">Payments</a>
+        <a href="transfer.html">Transfers</a>
+        <a href="analytics.html">Analytics</a>
+        <a href="cards.html">Cards</a>
+        <a href="loans.html">Loans</a>
+        <a href="settings.html">Settings</a>
+      </nav>
+    </div>
+
+    <div class="sidebar-bottom">
+      <a href="signup.html" class="signup">Sign Up</a>
+      <a href="logout.html" class="logout">Log Out</a>
+    </div>
+
+  </aside>
+
+  <!-- MAIN -->
+  <main class="main">
+
+    <div class="topbar">
+      <h1>Your Cards 💳</h1>
+      <p>Manage all your debit and credit cards.</p>
+    </div>
+
+    <section class="cards-grid">
+
+      <!-- CARD 1 -->
+      <div class="card">
+        <div class="card-type">Debit Card</div>
+        <div class="card-number">**** **** **** 4821</div>
+
+        <div class="visa">VISA</div>
+
+        <div class="card-bottom">
+          <div>
+            <div class="label">Card Holder</div>
+            <div class="value">Ba User</div>
+          </div>
+
+          <div>
+            <div class="label">Expiry</div>
+            <div class="value">09/29</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- CARD 2 -->
+      <div class="card">
+        <div class="card-type">Credit Card</div>
+        <div class="card-number">**** **** **** 9034</div>
+
+        <div class="visa">VISA</div>
+
+        <div class="card-bottom">
+          <div>
+            <div class="label">Card Holder</div>
+            <div class="value">Ba User</div>
+          </div>
+
+          <div>
+            <div class="label">Expiry</div>
+            <div class="value">05/28</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ADD CARD -->
+      <div class="card add-card">
+        + Add New Card
+      </div>
+
+    </section>
+
+  </main>
+
+</body>
+</html>

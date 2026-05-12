@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>AYOBAMI BANK Dashboard</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family:'Inter',sans-serif;
+    }
+
+    body{
+      background:#0f172a;
+      color:#fff;
+      min-height:100vh;
+      display:flex;
+    }
+
+    .sidebar{
+      width:260px;
+      background:#111827;
+      padding:30px 20px;
+      display:flex;
+      flex-direction:column;
+      justify-content:space-between;
+      border-right:1px solid rgba(255,255,255,0.05);
+    }
+
+    .logo{
+      font-size:28px;
+      font-weight:700;
+      margin-bottom:40px;
+      color:#38bdf8;
+    }
+
+    .menu{
+      display:flex;
+      flex-direction:column;
+      gap:12px;
+    }
+
+    .menu a{
+      text-decoration:none;
+      color:#cbd5e1;
+      padding:14px 18px;
+      border-radius:14px;
+      transition:0.3s ease;
+      font-weight:500;
+    }
+
+    .menu a:hover,
+    .menu a.active{
+      background:#1e293b;
+      color:#fff;
+    }
+
+    .sidebar-bottom{
+      display:flex;
+      flex-direction:column;
+      gap:12px;
+    }
+
+    .signup{
+      padding:14px 18px;
+      border-radius:14px;
+      background:#1e293b;
+      text-align:center;
+      text-decoration:none;
+      color:white;
+      font-weight:600;
+      transition:0.3s ease;
+      border:1px solid rgba(255,255,255,0.05);
+    }
+
+    .signup:hover{
+      background:#273549;
+    }
+
+    .logout{
+      padding:14px 18px;
+      border-radius:14px;
+      background:#ef4444;
+      text-align:center;
+      text-decoration:none;
+      color:white;
+      font-weight:600;
+      transition:0.3s ease;
+    }
+
+    .logout:hover{
+      opacity:0.9;
+    }
+
+    .main{
+      flex:1;
+      padding:30px;
+      overflow-y:auto;
+    }
+
+    .topbar{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      margin-bottom:30px;
+    }
+
+    .welcome h1{
+      font-size:30px;
+      margin-bottom:8px;
+    }
+
+    .welcome p{
+      color:#94a3b8;
+    }
+
+    .profile{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      background:#1e293b;
+      padding:12px 18px;
+      border-radius:14px;
+    }
+
+    .avatar{
+      width:42px;
+      height:42px;
+      border-radius:50%;
+      background:linear-gradient(135deg,#38bdf8,#2563eb);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-weight:bold;
+    }
+
+    .cards{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+      gap:20px;
+      margin-bottom:30px;
+    }
+
+    .card{
+      background:linear-gradient(135deg,#1e293b,#111827);
+      border-radius:24px;
+      padding:24px;
+      position:relative;
+      overflow:hidden;
+      border:1px solid rgba(255,255,255,0.05);
+    }
+
+    .card::before{
+      content:"";
+      position:absolute;
+      width:180px;
+      height:180px;
+      background:rgba(56,189,248,0.1);
+      border-radius:50%;
+      top:-80px;
+      right:-80px;
+    }
+
+    .card h3{
+      color:#cbd5e1;
+      margin-bottom:18px;
+      font-size:16px;
+      font-weight:500;
+    }
+
+    .balance{
+      font-size:36px;
+      font-weight:700;
+      margin-bottom:12px;
+    }
+
+    .small{
+      color:#94a3b8;
+      font-size:14px;
+    }
+
+    .actions{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+      gap:18px;
+      margin-bottom:30px;
+    }
+
+    .action-btn{
+      background:#1e293b;
+      border:none;
+      padding:20px;
+      border-radius:20px;
+      color:white;
+      font-size:16px;
+      font-weight:600;
+      cursor:pointer;
+      transition:0.3s ease;
+      border:1px solid rgba(255,255,255,0.05);
+    }
+
+    .action-btn:hover{
+      transform:translateY(-4px);
+      background:#273549;
+    }
+
+    .section-grid{
+      display:grid;
+      grid-template-columns:2fr 1fr;
+      gap:24px;
+    }
+
+    .transactions,
+    .quick-transfer{
+      background:#111827;
+      border-radius:24px;
+      padding:24px;
+      border:1px solid rgba(255,255,255,0.05);
+    }
+
+    .section-title{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      margin-bottom:24px;
+    }
+
+    .section-title h2{
+      font-size:22px;
+    }
+
+    .transaction{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      padding:18px 0;
+      border-bottom:1px solid rgba(255,255,255,0.05);
+    }
+
+    .transaction:last-child{
+      border-bottom:none;
+    }
+
+    .transaction-left{
+      display:flex;
+      align-items:center;
+      gap:14px;
+    }
+
+    .transaction-icon{
+      width:50px;
+      height:50px;
+      border-radius:14px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      background:#1e293b;
+      font-size:18px;
+    }
+
+    .transaction-info h4{
+      margin-bottom:4px;
+    }
+
+    .transaction-info p{
+      color:#94a3b8;
+      font-size:13px;
+    }
+
+    .positive{
+      color:#22c55e;
+      font-weight:600;
+    }
+
+    .negative{
+      color:#ef4444;
+      font-weight:600;
+    }
+
+    .transfer-form{
+      display:flex;
+      flex-direction:column;
+      gap:18px;
+    }
+
+    .transfer-form input,
+    .transfer-form select{
+      width:100%;
+      padding:16px;
+      border-radius:14px;
+      border:none;
+      background:#1e293b;
+      color:white;
+      outline:none;
+      font-size:15px;
+    }
+
+    .transfer-form button{
+      padding:16px;
+      border-radius:14px;
+      border:none;
+      background:linear-gradient(135deg,#38bdf8,#2563eb);
+      color:white;
+      font-size:16px;
+      font-weight:600;
+      cursor:pointer;
+      transition:0.3s ease;
+    }
+
+    .transfer-form button:hover{
+      transform:scale(1.02);
+    }
+
+    .notification{
+      margin-top:24px;
+      background:rgba(56,189,248,0.12);
+      border:1px solid rgba(56,189,248,0.2);
+      padding:18px;
+      border-radius:16px;
+      color:#bae6fd;
+    }
+
+    .analytics{
+      margin-top:30px;
+      background:#111827;
+      border-radius:24px;
+      padding:24px;
+      border:1px solid rgba(255,255,255,0.05);
+    }
+
+    .chart{
+      margin-top:24px;
+      display:flex;
+      align-items:flex-end;
+      justify-content:space-between;
+      gap:12px;
+      height:240px;
+    }
+
+    .bar{
+      flex:1;
+      background:linear-gradient(to top,#2563eb,#38bdf8);
+      border-radius:16px 16px 0 0;
+      position:relative;
+    }
+
+    .bar span{
+      position:absolute;
+      bottom:-28px;
+      left:50%;
+      transform:translateX(-50%);
+      color:#94a3b8;
+      font-size:13px;
+    }
+
+    @media (max-width:1100px){
+      .section-grid{
+        grid-template-columns:1fr;
+      }
+    }
+
+    @media (max-width:850px){
+
+      body{
+        flex-direction:column;
+      }
+
+      .sidebar{
+        width:100%;
+      }
+
+      .menu{
+        flex-direction:row;
+        flex-wrap:wrap;
+      }
+
+      .topbar{
+        flex-direction:column;
+        align-items:flex-start;
+        gap:18px;
+      }
+    }
+
+    @media (max-width:600px){
+
+      .main{
+        padding:18px;
+      }
+
+      .balance{
+        font-size:28px;
+      }
+
+      .welcome h1{
+        font-size:24px;
+      }
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <aside class="sidebar">
+
+    <div>
+
+      <div class="logo">AyobamiBank</div>
+
+      <nav class="menu">
+        <a href="dashboard.html" class="active">Dashboard</a>
+        <a href="payment.html">Payments</a>
+        <a href="transfer.html">Transfers</a>
+        <a href="analytics.html">Analytics</a>
+        <a href="cards.html">Cards</a>
+        <a href="loans.html">Loans</a>
+        <a href="settings.html">Settings</a>
+      </nav>
+
+    </div>
+
+    <div class="sidebar-bottom">
+      <a href="signup.html" class="signup">Sign Up</a>
+      <a href="logout.html" class="logout">Log Out</a>
+    </div>
+
+  </aside>
+
+  <main class="main">
+
+    <div class="topbar">
+
+      <div class="welcome">
+        <h1>Welcome Back 👋</h1>
+        <p>Manage your finances with speed and security.</p>
+      </div>
+
+      <div class="profile">
+
+        <div class="avatar">B</div>
+
+        <div>
+          <strong>Ba User</strong><br>
+          <small style="color:#94a3b8;">Premium Member</small>
+        </div>
+
+      </div>
+
+    </div>
+
+    <section class="cards">
+
+      <div class="card">
+        <h3>Total Balance</h3>
+        <div class="balance">$490,880.00</div>
+        <div class="small">+12.5% from last month</div>
+      </div>
+
+      <div class="card">
+        <h3>Savings Account</h3>
+        <div class="balance">$9,240.00</div>
+        <div class="small">Interest Rate: 3.5%</div>
+      </div>
+
+      <div class="card">
+        <h3>Credit Card</h3>
+        <div class="balance">$2,130.00</div>
+        <div class="small">Available Limit: $12,000</div>
+      </div>
+
+    </section>
+
+  </main>
+
+</body>
+</html>

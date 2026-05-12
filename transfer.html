@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AyobamiBank Transfer</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Inter',sans-serif;
+}
+
+body{
+  background:#0f172a;
+  color:white;
+  min-height:100vh;
+  display:flex;
+}
+
+.sidebar{
+  width:260px;
+  background:#111827;
+  padding:30px 20px;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+  border-right:1px solid rgba(255,255,255,0.05);
+}
+
+.logo{
+  font-size:28px;
+  font-weight:700;
+  margin-bottom:40px;
+  color:#38bdf8;
+}
+
+.menu{
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+}
+
+.menu a{
+  text-decoration:none;
+  color:#cbd5e1;
+  padding:14px 18px;
+  border-radius:14px;
+  transition:0.3s ease;
+  font-weight:500;
+}
+
+.menu a:hover,
+.menu a.active{
+  background:#1e293b;
+  color:white;
+}
+
+.sidebar-bottom{
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+}
+
+.signup{
+  padding:14px 18px;
+  border-radius:14px;
+  background:#1e293b;
+  text-align:center;
+  text-decoration:none;
+  color:white;
+  font-weight:600;
+  transition:0.3s ease;
+}
+
+.signup:hover{
+  background:#273549;
+}
+
+.logout{
+  padding:14px 18px;
+  border-radius:14px;
+  background:#ef4444;
+  text-align:center;
+  text-decoration:none;
+  color:white;
+  font-weight:600;
+  transition:0.3s ease;
+}
+
+.logout:hover{
+  opacity:0.9;
+}
+
+.main{
+  flex:1;
+  padding:40px;
+}
+
+.topbar{
+  margin-bottom:30px;
+}
+
+.topbar h1{
+  font-size:32px;
+  margin-bottom:10px;
+}
+
+.topbar p{
+  color:#94a3b8;
+}
+
+.transfer-wrapper{
+  max-width:700px;
+}
+
+.transfer-card{
+  background:#111827;
+  padding:35px;
+  border-radius:28px;
+  border:1px solid rgba(255,255,255,0.05);
+  position:relative;
+  overflow:hidden;
+}
+
+.transfer-card::before{
+  content:"";
+  position:absolute;
+  width:220px;
+  height:220px;
+  border-radius:50%;
+  background:rgba(56,189,248,0.08);
+  top:-120px;
+  right:-120px;
+}
+
+.transfer-title{
+  font-size:26px;
+  margin-bottom:10px;
+}
+
+.transfer-subtitle{
+  color:#94a3b8;
+  margin-bottom:30px;
+}
+
+.transfer-form{
+  display:flex;
+  flex-direction:column;
+  gap:20px;
+}
+
+.form-group{
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+}
+
+.form-group label{
+  color:#cbd5e1;
+  font-size:14px;
+  font-weight:500;
+}
+
+.form-group input,
+.form-group select{
+  width:100%;
+  padding:16px;
+  border:none;
+  outline:none;
+  border-radius:16px;
+  background:#1e293b;
+  color:white;
+  font-size:15px;
+  transition:0.3s ease;
+}
+
+.form-group input:focus,
+.form-group select:focus{
+  border:1px solid #38bdf8;
+}
+
+.transfer-btn{
+  margin-top:10px;
+  padding:18px;
+  border:none;
+  border-radius:18px;
+  background:linear-gradient(135deg,#38bdf8,#2563eb);
+  color:white;
+  font-size:16px;
+  font-weight:600;
+  cursor:pointer;
+  transition:0.3s ease;
+}
+
+.transfer-btn:hover{
+  transform:translateY(-2px);
+}
+
+.security-box{
+  margin-top:25px;
+  padding:18px;
+  border-radius:18px;
+  background:rgba(56,189,248,0.08);
+  border:1px solid rgba(56,189,248,0.15);
+  color:#bae6fd;
+  line-height:1.6;
+}
+
+@media(max-width:900px){
+
+  body{
+    flex-direction:column;
+  }
+
+  .sidebar{
+    width:100%;
+  }
+
+  .menu{
+    flex-direction:row;
+    flex-wrap:wrap;
+  }
+
+}
+
+@media(max-width:600px){
+
+  .main{
+    padding:20px;
+  }
+
+  .transfer-card{
+    padding:25px;
+  }
+
+  .topbar h1{
+    font-size:26px;
+  }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<aside class="sidebar">
+
+  <div>
+
+    <div class="logo">AyobamiBank</div>
+
+    <nav class="menu">
+        <a href="dashboard.html" class="">Dashboard</a>
+        <a href="payment.html">Payments</a>
+        <a href="transfer.html">Transfers</a>
+        <a href="analytics.html">Analytics</a>
+        <a href="cards.html">Cards</a>
+        <a href="loans.html">Loans</a>
+        <a href="settings.html">Settings</a>
+      </nav>
+
+  </div>
+
+  <div class="sidebar-bottom">
+
+    <a href="signup.html" class="signup">Sign Up</a>
+
+    <a href="logout.html" class="logout">Log Out</a>
+
+  </div>
+
+</aside>
+
+<main class="main">
+
+  <div class="topbar">
+    <h1>Bank Transfer</h1>
+    <p>Send money quickly and securely to any bank account.</p>
+  </div>
+
+  <div class="transfer-wrapper">
+
+    <div class="transfer-card">
+
+      <h2 class="transfer-title">Transfer Funds</h2>
+
+      <p class="transfer-subtitle">
+        Complete the form below to make a secure transfer.
+      </p>
+
+      <form class="transfer-form">
+
+        <div class="form-group">
+          <label>Recipient Full Name</label>
+          <input type="text" placeholder="Enter recipient name">
+        </div>
+
+        <div class="form-group">
+          <label>Account Number</label>
+          <input type="number" placeholder="Enter account number">
+        </div>
+
+        <div class="form-group">
+          <label>Select Bank</label>
+          <select>
+            <option>Select Bank</option>
+            <option>GTBank</option>
+            <option>Zenith Bank</option>
+            <option>Access Bank</option>
+            <option>UBA</option>
+            <option>First Bank</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label>Amount</label>
+          <input type="number" placeholder="Enter amount">
+        </div>
+
+        <div class="form-group">
+          <label>Description</label>
+          <input type="text" placeholder="Transfer description">
+        </div>
+
+        <button class="transfer-btn">
+          Transfer Money
+        </button>
+
+      </form>
+
+      <div class="security-box">
+        🔒 All transfers are protected with advanced bank-level encryption and fraud protection systems.
+      </div>
+
+    </div>
+
+  </div>
+
+</main>
+
+</body>
+</html>

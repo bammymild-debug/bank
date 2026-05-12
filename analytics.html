@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>AyobamiBank - Analytics</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family:'Inter',sans-serif;
+    }
+
+    body{
+      display:flex;
+      min-height:100vh;
+      background:#0f172a;
+      color:white;
+    }
+
+    /* SIDEBAR */
+    .sidebar{
+      width:260px;
+      background:#111827;
+      padding:30px 20px;
+      display:flex;
+      flex-direction:column;
+      justify-content:space-between;
+      border-right:1px solid rgba(255,255,255,0.05);
+    }
+
+    .logo{
+      font-size:28px;
+      font-weight:700;
+      color:#38bdf8;
+      margin-bottom:40px;
+    }
+
+    .menu{
+      display:flex;
+      flex-direction:column;
+      gap:12px;
+    }
+
+    .menu a{
+      text-decoration:none;
+      color:#cbd5e1;
+      padding:14px 18px;
+      border-radius:14px;
+      transition:0.3s;
+      font-weight:500;
+    }
+
+    .menu a:hover,
+    .menu a.active{
+      background:#1e293b;
+      color:white;
+    }
+
+    .sidebar-bottom{
+      display:flex;
+      flex-direction:column;
+      gap:12px;
+    }
+
+    .signup{
+      padding:14px 18px;
+      border-radius:14px;
+      background:#1e293b;
+      text-align:center;
+      text-decoration:none;
+      color:white;
+      font-weight:600;
+      border:1px solid rgba(255,255,255,0.05);
+    }
+
+    .logout{
+      padding:14px 18px;
+      border-radius:14px;
+      background:#ef4444;
+      text-align:center;
+      text-decoration:none;
+      color:white;
+      font-weight:600;
+    }
+
+    /* MAIN */
+    .main{
+      flex:1;
+      padding:30px;
+    }
+
+    .topbar{
+      margin-bottom:30px;
+    }
+
+    .topbar h1{
+      font-size:32px;
+    }
+
+    .topbar p{
+      color:#94a3b8;
+      margin-top:6px;
+    }
+
+    /* CARDS */
+    .cards{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+      gap:20px;
+      margin-bottom:30px;
+    }
+
+    .card{
+      background:#111827;
+      padding:20px;
+      border-radius:20px;
+      border:1px solid rgba(255,255,255,0.05);
+    }
+
+    .card h3{
+      color:#94a3b8;
+      font-size:14px;
+      margin-bottom:10px;
+    }
+
+    .card h2{
+      font-size:26px;
+    }
+
+    /* CHART */
+    .chart-box{
+      background:#111827;
+      padding:25px;
+      border-radius:24px;
+      border:1px solid rgba(255,255,255,0.05);
+      margin-bottom:30px;
+    }
+
+    .chart-title{
+      margin-bottom:20px;
+      font-size:20px;
+    }
+
+    .chart{
+      display:flex;
+      align-items:flex-end;
+      gap:12px;
+      height:250px;
+    }
+
+    .bar{
+      flex:1;
+      background:linear-gradient(to top,#2563eb,#38bdf8);
+      border-radius:14px 14px 0 0;
+      position:relative;
+    }
+
+    .bar span{
+      position:absolute;
+      bottom:-25px;
+      left:50%;
+      transform:translateX(-50%);
+      color:#94a3b8;
+      font-size:12px;
+    }
+
+    /* TABLE */
+    .table-box{
+      background:#111827;
+      padding:25px;
+      border-radius:24px;
+      border:1px solid rgba(255,255,255,0.05);
+    }
+
+    table{
+      width:100%;
+      border-collapse:collapse;
+    }
+
+    th, td{
+      padding:14px;
+      text-align:left;
+      border-bottom:1px solid rgba(255,255,255,0.05);
+      color:#cbd5e1;
+    }
+
+    th{
+      color:white;
+      font-weight:600;
+    }
+
+    .income{
+      color:#22c55e;
+      font-weight:600;
+    }
+
+    .expense{
+      color:#ef4444;
+      font-weight:600;
+    }
+
+    /* RESPONSIVE */
+    @media(max-width:850px){
+      body{
+        flex-direction:column;
+      }
+
+      .sidebar{
+        width:100%;
+      }
+
+      .menu{
+        flex-direction:row;
+        flex-wrap:wrap;
+      }
+    }
+
+    @media(max-width:600px){
+      .main{
+        padding:20px;
+      }
+
+      .topbar h1{
+        font-size:26px;
+      }
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+
+    <div>
+      <div class="logo">AyobamiBank</div>
+
+      <nav class="menu">
+        <a href="dashboard.html" class="active">Dashboard</a>
+        <a href="payment.html">Payments</a>
+        <a href="transfer.html">Transfers</a>
+        <a href="analytics.html">Analytics</a>
+        <a href="cards.html">Cards</a>
+        <a href="loans.html">Loans</a>
+        <a href="settings.html">Settings</a>
+      </nav>
+    </div>
+
+    <div class="sidebar-bottom">
+      <a href="signup.html" class="signup">Sign Up</a>
+      <a href="logout.html" class="logout">Log Out</a>
+    </div>
+
+  </aside>
+
+  <!-- MAIN -->
+  <main class="main">
+
+    <div class="topbar">
+      <h1>Analytics 📊</h1>
+      <p>Track your spending and income performance.</p>
+    </div>
+
+    <!-- STATS -->
+    <section class="cards">
+
+      <div class="card">
+        <h3>Total Income</h3>
+        <h2 class="income">$24,500</h2>
+      </div>
+
+      <div class="card">
+        <h3>Total Expenses</h3>
+        <h2 class="expense">-$9,200</h2>
+      </div>
+
+      <div class="card">
+        <h3>Savings Growth</h3>
+        <h2>+18%</h2>
+      </div>
+
+      <div class="card">
+        <h3>Transactions</h3>
+        <h2>142</h2>
+      </div>
+
+    </section>
+
+    <!-- CHART -->
+    <section class="chart-box">
+
+      <div class="chart-title">Monthly Performance</div>
+
+      <div class="chart">
+        <div class="bar" style="height:60%"><span>Jan</span></div>
+        <div class="bar" style="height:80%"><span>Feb</span></div>
+        <div class="bar" style="height:50%"><span>Mar</span></div>
+        <div class="bar" style="height:95%"><span>Apr</span></div>
+        <div class="bar" style="height:70%"><span>May</span></div>
+        <div class="bar" style="height:85%"><span>Jun</span></div>
+      </div>
+
+    </section>
+
+    <!-- TABLE -->
+    <section class="table-box">
+
+      <h3 style="margin-bottom:15px;">Recent Analytics Data</h3>
+
+      <table>
+        <tr>
+          <th>Category</th>
+          <th>Amount</th>
+          <th>Status</th>
+        </tr>
+
+        <tr>
+          <td>Shopping</td>
+          <td>-$1,200</td>
+          <td class="expense">Expense</td>
+        </tr>
+
+        <tr>
+          <td>Salary</td>
+          <td>$4,500</td>
+          <td class="income">Income</td>
+        </tr>
+
+        <tr>
+          <td>Rent</td>
+          <td>-$800</td>
+          <td class="expense">Expense</td>
+        </tr>
+
+      </table>
+
+    </section>
+
+  </main>
+
+</body>
+</html>

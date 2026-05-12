@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mail Page</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Inter', sans-serif;
+    }
+
+    body {
+      min-height: 100vh;
+      background: #0f172a;
+      color: #fff;
+      padding: 24px;
+    }
+
+    .mail-page {
+      max-width: 960px;
+      margin: 0 auto;
+    }
+
+    .mail-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 28px;
+      gap: 12px;
+    }
+
+    .mail-title {
+      font-size: 32px;
+      font-weight: 700;
+    }
+
+    .mail-subtitle {
+      color: #94a3b8;
+      margin-top: 6px;
+    }
+
+    .mail-card {
+      background: #111827;
+      border-radius: 24px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      overflow: hidden;
+    }
+
+    .mail-item {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 16px;
+      padding: 22px 24px;
+      align-items: center;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .mail-item:last-child {
+      border-bottom: none;
+    }
+
+    .mail-item h3 {
+      font-size: 16px;
+      margin-bottom: 6px;
+    }
+
+    .mail-item p {
+      color: #94a3b8;
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    .mail-item span {
+      color: #60a5fa;
+      font-size: 14px;
+      white-space: nowrap;
+    }
+
+    .mail-footer {
+      margin-top: 24px;
+      text-align: center;
+      color: #64748b;
+      font-size: 14px;
+    }
+
+    .button-secondary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 14px 20px;
+      border-radius: 16px;
+      border: none;
+      text-decoration: none;
+      background: rgba(255, 255, 255, 0.08);
+      color: #fff;
+      font-weight: 600;
+      transition: transform 0.2s ease;
+    }
+
+    .button-secondary:hover {
+      transform: translateY(-2px);
+    }
+
+    @media (max-width: 740px) {
+      .mail-item {
+        grid-template-columns: 1fr;
+      }
+
+      .mail-item span {
+        margin-top: 12px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <section class="mail-page">
+    <div class="mail-header">
+      <div>
+        <h1 class="mail-title">Mail Inbox</h1>
+        <p class="mail-subtitle">Your secure mail page after logout. No bank balance is shown here.</p>
+      </div>
+      <a href="dashboard.html" class="button-secondary">Back to Bank</a>
+    </div>
+
+    <div class="mail-card">
+      <article class="mail-item">
+        <div>
+          <h3>Welcome to AyobamiMail</h3>
+          <p>Thanks for logging out securely. This page intentionally shows no bank details.</p>
+        </div>
+        <span>Today</span>
+      </article>
+      <article class="mail-item">
+        <div>
+          <h3>Security notice</h3>
+          <p>Always log out when you finish banking to protect your account.</p>
+        </div>
+        <span>Yesterday</span>
+      </article>
+      <article class="mail-item">
+        <div>
+          <h3>Inbox placeholder</h3>
+          <p>Use this page as your mail landing page after you log out of the bank.</p>
+        </div>
+        <span>2 days ago</span>
+      </article>
+    </div>
+
+    <p class="mail-footer">If you want to replace this with your real mail page, just update the link in <code>logout.html</code>.</p>
+  </section>
+</body>
+</html>
